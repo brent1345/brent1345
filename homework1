@@ -1,0 +1,134 @@
+- 👋 Hi, I’m @brent1345
+- 👀 I’m interested in ...
+- 🌱 I’m currently learning ...
+- 💞️ I’m looking to collaborate on ...
+- 📫 How to reach me ...
+
+<!---
+brent1345/brent1345 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+You can click the Preview link to take a look at your changes.
+--->
+xtabs(~V17 + V21, data=plays_top50) %>%
+    prop.table(margin=2) %>%
+    round(3)
+
+#Part 1a above
+
+xtabs(~V8 + V44, data=plays_top50) %>%
+     prop.table(margin=2) %>%
+  
+  #Part 1b above
+  
+     round(3)
+xtabs(~danger,data=superbowl)%>%
+  prop.table
+
+xtabs(~danger + funny, data=superbowl) %>%
+   prop.table(margin=2) %>%
+     round(2)
+
+# Part 2A above 
+
+xtabs(~animals,data=superbowl)%>%
+      prop.table
+
+xtabs(~animals + use_sex, data=superbowl) %>%
+      prop.table(margin=2) %>%
+        round(2)
+
+# Part 2B above 
+
+xtabs(~celebrity,data=superbowl)%>%
+     prop.table
+
+xtabs(~celebrity + patriotic, data=superbowl) %>%
+   prop.table(margin=2) %>%
+   round(2)
+
+# Part 2C above 
+
+ggplot(profs) 
+      geom_histogram(aes(x=eval, y=..density..), binwidth=.1)
+
+# Part 3A above 
+      
+  ggplot(profs) + 
+        geom_boxplot(aes(x = native, y = eval)) 
+
+  # Part 3B above 
+
+  ggplot(profs) + 
+    geom_histogram(aes(x=eval), binwidth=.1) + 
+    facet_wrap(~gender) 
+
+  # Part 3C above   
+  
+  ggplot(profs) + 
+    geom_point(aes(x=beauty, y=eval, color=gender))
+
+  # Part 3d above
+  
+  utsat %>%
+    summarize(avg_SAT.V = mean(SAT.V),
+              median_SAT.V = median(SAT.V),
+              sd_SAT.V = sd(SAT.V),
+              iqr_SAT.V= IQR(SAT.V),
+              q25_SAT.V = quantile(SAT.V, 0.25),
+              q75_SAT.V = quantile(SAT.V, 0.75),
+              q05_SAT.V = quantile(SAT.V, 0.05),
+              q95_SAT.V = quantile(SAT.V, 0.95)) %>%
+    round(1)  
+
+  utsat %>%
+    summarize(avg_SAT.Q = mean(SAT.Q),
+              median_SAT.Q = median(SAT.Q),
+              sd_SAT.Q = sd(SAT.Q),
+              iqr_SAT.Q= IQR(SAT.Q),
+              q25_SAT.Q = quantile(SAT.Q, 0.25),
+              q75_SAT.Q = quantile(SAT.Q, 0.75),
+              q05_SAT.Q = quantile(SAT.Q, 0.05),
+              q95_SAT.Q = quantile(SAT.Q, 0.95)) %>%
+    round(1)  
+  
+  utsat %>%
+    summarize(avg_GPA = mean(GPA),
+              median_GPA = median(GPA),
+              sd_GPA = sd(GPA),
+              iqr_GPA= IQR(GPA),
+              q25_GPA = quantile(GPA, 0.25),
+              q75_GPA = quantile(GPA, 0.75),
+              q05_GPA = quantile(GPA, 0.05),
+              q95_GPA = quantile(GPA, 0.95)) %>%
+    round(1)  
+ 
+   #Part 4a above 
+  
+  ggplot(bikeshare) + 
+    geom_line(aes(x=hr, y=total))
+  
+  ggplot(utsat) 
+       geom_boxplot(aes(x = School, y = SAT.C))
+  
+    #Part 4b above 
+  
+bikeshare %>% 
+  group_by(hr) %>% 
+  summarize(avg_total = mean(total)) %>% 
+  ggplot(aes(x=hr, y=avg_total)) + geom_line()
+
+#Part 5a above 
+
+bikeshare %>% 
+  group_by(hr, workingday) %>% 
+  summarize(avg_total = mean(total)) %>% 
+  ggplot(aes(x=hr, y=avg_total)) + geom_line() + facet_wrap(~workingday)
+
+#Part 5b above 
+
+bikeshare %>% 
+  filter(hr == 9)  %>% 
+  group_by(workingday, weathersit) %>% 
+  summarize(avg_total = mean(total)) %>% 
+  ggplot(aes(x=weathersit, y=avg_total)) + geom_col() + facet_wrap(~workingday)
+
+#Part 5c above 
